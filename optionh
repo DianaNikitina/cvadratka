@@ -1,0 +1,5 @@
+#ifndef OPTION_H_INCLUDED
+#define OPTION_H_INCLUDED
+
+int option();
+#endif
