@@ -1,0 +1,5 @@
+#ifndef CLEANBUFFER_H_INCLUDED
+#define CLEANBUFFER_H_INCLUDED
+
+void CleanBuffer();
+#endif
