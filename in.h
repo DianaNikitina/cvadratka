@@ -1,0 +1,7 @@
+#ifndef IN_H_INCLUDED
+#define IN_H_INCLUDED
+
+#include "struct.h"
+
+void in (struct coef *num);
+#endif

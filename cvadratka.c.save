@@ -1,0 +1,258 @@
+#include <stdio.h>
+
+//#include "test.cpp"
+
+#include <math.h>
+
+#include <assert.h>
+
+#include <stdlib.h>
+
+#include "delta.h"
+
+#define INF_ROOT -1
+#define NO_ROOT 0
+#define ONE_ROOT 1
+#define TWO_ROOT 2
+
+ const double EPS = 1e-9;
+
+
+//int x = 2;
+//int *y = &x;
+//0x05524 => 2
+//0x06823 => 0x05524
+//x -> 2
+//&x ->
+
+
+/*!
+    \author NKD
+    \version 1.7
+    \date 22.08.25 - 23.08.25
+    \warning Do not confuse & && *
+*/
+
+
+struct coef
+    {
+        double a;
+        double b;
+        double c;
+    };
+
+struct res
+    {
+        double x1;
+        double x2;
+        int c_root;
+    };
+
+
+struct res1
+    {
+        double x1;
+        double x2;
+        int c_root;
+
+    };
+int SquareSolve (struct coef *num, struct res *ans);
+
+void in (struct coef *num);
+
+void CleanBuffer();
+
+int out (struct res ans);
+
+void TestSquareSolve ();
+
+int OneTest (struct coef num, struct res ans);
+
+void own_assert (int value);
+
+int delta(double vallue);
+
+void RunTest();
+
+int main(void)
+{
+    int c = 0;
+
+    struct coef num = {.a = NAN, .b = NAN, .c = NAN};
+
+    struct res ans = {.x1 = NAN, .x2 = NAN, .c_root = 0};
+
+    printf ("This is solution of square\n");
+
+    printf ("Enter a, b, c\n");
+
+    in(&num);
+
+    printf("> a = %lg, b = %lg, c = %lg\n", num.a, num.b, num.c);
+
+    ans.c_root = SquareSolve(&num, &ans);
+
+    out (ans);
+
+    printf ("UnitTest\n");
+
+    RunTest();
+
+    //TestSquareSolve ();
+
+    return 0;
+}
+
+int SquareSolve(struct coef *num, struct res *ans)
+{
+
+    double a = num->a, b = num->b, c = num->c;
+    double x1 = ans->x1, x2 = ans->x2;
+
+    assert (!delta(x1));
+    assert (!delta(x2));
+
+    double D = b*b - 4*a*c;
+    if (delta(a) && delta(b) && delta(c))
+        return -1;
+    else
+        if ((D < 0) || (delta(a) && delta(b) && !delta(c)))
+            return 0;
+        else
+            if (delta(a) && !delta(b) && !delta(c))
+            {
+                x1 = -c/b;
+                ans->x1 = x1;
+                return 1;
+            }
+            else
+                if ((delta(a) && !delta(b) && delta(c))||(!delta(a) && delta(b) && delta(c)))
+                {
+                    x1 = 0;
+                    ans->x1 = x1;
+                    return 1;
+                }
+                else
+                    {
+                        x1 = (-b + sqrt(D))/(2*a);
+                        ans->x1 = x1;
+                        x2 = (-b - sqrt(D))/(2*a);
+                        ans->x2 = x2;
+                        return 2;
+                    }
+
+}
+
+void in (struct coef *num)
+{
+    printf ("Enter coefficient a: ");
+    while (scanf ("%lg", &num->a) == 0)
+    {
+        CleanBuffer();
+        printf ("Try again\n");
+        printf ("Enter coefficient a: ");
+    }
+
+    printf ("Enter coefficient b: ");
+    while (scanf ("%lg", &num->b) == 0)
+    {
+        CleanBuffer();
+        printf ("Try again\n");
+        printf ("Enter coefficient b: ");
+    }
+
+    printf ("Enter coefficient c: ");
+    while (scanf ("%lg", &num->c) == 0)
+    {
+        CleanBuffer();
+        printf ("Try again\n");
+        printf ("Enter coefficient c: ");
+    }
+}
+
+int out(struct res ans)
+{
+    switch (ans.c_root)
+        {
+
+        case INF_ROOT:
+            printf ("Infinity rutes\n");
+            break;
+
+        case NO_ROOT:
+            printf ("No rutes\n");
+            break;
+
+        case ONE_ROOT:
+            printf ("1 rutes - %lg\n", ans.x1);
+            break;
+
+        case TWO_ROOT:
+            printf ("2 rutes - %lg and %lg\n", ans.x1, ans.x2);
+            break;
+
+        default:
+            break;
+
+        }
+    return 0;
+}
+
+void CleanBuffer()
+{
+    while (getchar() != '\n'){}
+}
+
+int OneTest (struct coef num, struct res ans)
+{
+    int c = 0;
+    struct res ans1 = {.x1 = NAN, .x2 = NAN, .c_root = 0};
+    ans1.c_root = SquareSolve (&num, &ans1);
+
+    switch (ans.c_root)
+    {
+        case INF_ROOT:
+            (ans1.c_root == -1) ? c = 0 : c = 1;
+            break;
+
+        case NO_ROOT: (ans1.c_root == 0) ? c = 0 : c = 1;
+            break;
+
+        case ONE_ROOT: ((ans1.c_root == 1) && ((delta(ans.x1 - ans1.x1) < EPS)||(delta(ans.x2 - ans1.x2) < EPS))) ? c = 0 : c = 1;
+            break;
+
+        case TWO_ROOT:((ans1.c_root == 2) && ((delta(ans.x1 - ans1.x1) < EPS) && (((delta(ans.x2 - ans1.x2) < EPS))||((delta(ans.x1 - ans1.x2) < EPS) && (delta(ans.x2 - ans1.x1) < EPS))))) ? c = 0 : c = 1;
+            break;
+
+        default:
+            break;
+
+    }
+  return c;
+}
+
+void RunTest()
+{
+    int passed = 0;
+    passed += OneTest ({1, -5, 6}, {2, 3, 2});
+    passed += OneTest ({0, 0, 0}, {-1, -1, -1});
+    passed += OneTest ({0, 1, 0}, {0, 0, 1});
+    passed += OneTest ({1, 0, 0},{0, 0, 1});
+    passed += OneTest ({0, 0, 1},{0, 0, 0});
+    passed += OneTest ({0, 1, 1},{-1, -1, 1});
+    // ט עה..
+    printf("%d", passed);
+}
+void own_assert(int value)
+{
+    if (!(value))
+    {
+        printf ("Assertion fail");
+        exit(1);
+    }
+}
+
+int delta(double vallue)
+{
+    return fabs(vallue) < EPS;
+}

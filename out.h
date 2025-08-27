@@ -1,0 +1,6 @@
+#ifndef OUT_H_INCLUDED
+#define OUT_H_INCLUDED
+#include "struct.h"
+
+int out (struct res ans);
+#endif

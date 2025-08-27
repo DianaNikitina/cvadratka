@@ -1,0 +1,16 @@
+#ifndef STRUCT_H_INCLUDED
+#define STRUCT_H_INCLUDED
+struct coef
+    {
+        double a;
+        double b;
+        double c;
+    };
+
+struct res
+    {
+        double x1;
+        double x2;
+        int c_root;
+    };
+#endif

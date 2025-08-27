@@ -1,0 +1,36 @@
+#define INF_ROOT -1
+#define NO_ROOT 0
+#define ONE_ROOT 1
+#define TWO_ROOT 2
+
+#include <stdio.h>
+
+#include "struct.h"
+
+int out(struct res ans)
+{
+    switch (ans.c_root)
+        {
+
+        case INF_ROOT:
+            printf ("Infinity rutes\n");
+            break;
+
+        case NO_ROOT:
+            printf ("No rutes\n");
+            break;
+
+        case ONE_ROOT:
+            printf ("1 rutes  %lg\n", ans.x1);
+            break;
+
+        case TWO_ROOT:
+            printf ("2 rutes  %lg and %lg\n", ans.x1, ans.x2);
+            break;
+
+        default:
+            break;
+
+        }
+    return 0;
+}

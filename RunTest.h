@@ -1,0 +1,4 @@
+#ifndef RUNTEST_H_INCLUDED
+#define RUNTEST_H_INCLUDED
+void RunTest();
+#endif

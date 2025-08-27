@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "cleanbuffer.h"
+#include "RunTest.h"
+#include "in.h"
+#include "struct.h"
+
+
+int option()
+{    
+
+    struct coef num = {.a = NAN, .b = NAN, .c = NAN};
+    printf ("Enter s if you want to solve equation\n OR\n");
+    printf ("Enter t if you want to run tests\n");
+
+
+    char c = 0;
+    c = getchar();
+    while ((c != 't') && (c != 's'))
+    {
+        CleanBuffer();
+        printf ("Try again\n");
+        printf ("Enter s if you want to solve equation\nOR\n");
+        printf ("Enter t if you want to run tests\n");
+
+    }
+
+    if (c == 't')
+    {
+        printf ("UnitTest\n");
+        RunTest();
+        exit(1);
+    }
+
+    if (c == 's')
+    {
+        return 0;
+    }
+}

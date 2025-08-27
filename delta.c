@@ -1,0 +1,8 @@
+#include <math.h>
+
+const double EPS = 1e-9;
+
+int delta(double vallue)
+{
+    return (fabs(vallue) < EPS);
+}
