@@ -1,3 +1,5 @@
+//! @file 
+
 #include "squareSolver.h"
 
 #include "delta.h"
@@ -10,6 +12,14 @@
 #define NO_ROOT 0
 #define ONE_ROOT 1
 #define TWO_ROOT 2
+
+/*!
+	\brief number roots 
+	\author NKD
+	\version 1.0
+	\date 22.08.25 - 30.08.25
+	\warning ternare operator
+*/
 
 
 int OneTest (struct coef num, struct res ans)

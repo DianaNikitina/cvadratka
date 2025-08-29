@@ -1,3 +1,4 @@
+//! @file 
 
 #include <math.h>
 
@@ -6,6 +7,14 @@
 #include "delta.h"
 
 #include "struct.h"
+
+/*!
+	\brief square solver  
+	\author NKD
+	\version 1.0
+	\date 22.08.25 - 30.08.25
+	\warning correct solv square
+*/
 
 
 int SquareSolve(struct coef *num, struct res *ans)

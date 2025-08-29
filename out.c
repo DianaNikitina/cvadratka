@@ -1,3 +1,4 @@
+//! @file 
 #define INF_ROOT -1
 #define NO_ROOT 0
 #define ONE_ROOT 1
@@ -6,6 +7,12 @@
 #include <stdio.h>
 
 #include "struct.h"
+/*!
+	\brief output number roots and roots
+	\author NKD
+	\version 1.0
+	\date 22.08.25 - 30.08.25
+*/
 
 int out(struct res ans)
 {

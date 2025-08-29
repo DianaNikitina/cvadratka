@@ -1,3 +1,5 @@
+//! @file 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -5,6 +7,14 @@
 #include "RunTest.h"
 #include "in.h"
 #include "struct.h"
+
+/*!
+	\brief interactive : option -t -s
+	\author NKD
+	\version 1.0
+	\date 22.08.25 - 30.08.25
+	\warning do not enter other symbols
+*/
 
 
 int option()

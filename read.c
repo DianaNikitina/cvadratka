@@ -1,16 +1,12 @@
 #include <stdio.h>
 
-//fscanf
+int main() 
+{
+    char * filename = "out.txt";
 
-int main() {
+    FILE *fp = fopen(filename, "w");
 
-    char arr[10];
-    FILE *fp = fopen("hello.txt", "r");
-
-    while (fgets(arr, 10, fp) != NULL)
-        printf("%s", arr);
-
-    fscanf(fp, "");
+    fprintf(fp, "%d %d %d %d\n", );
 
     fclose (fp);
     return 0;

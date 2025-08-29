@@ -1,7 +1,15 @@
+//! @file 
 #include <stdio.h>
 #include "OneTest.h"
 #include <stdlib.h>
 #include <math.h>
+
+/*!
+	\brief tests coef+roots+number roots 
+	\author NKD
+	\version 1.0
+	\date 22.08.25 - 30.08.25
+*/
 
 
 void RunTest()

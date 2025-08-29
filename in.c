@@ -1,9 +1,17 @@
+//! @file 
+
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 #include "RunTest.h"
 #include "struct.h"
 #include "cleanbuffer.h"
+
+/*!
+	\brief input data
+	\author NKD
+	\version 1.0
+	\date 22.08.25 - 30.08.25
+	\warning do not forget cleanbuffer
+*/
 
 
 void in (struct coef *num)

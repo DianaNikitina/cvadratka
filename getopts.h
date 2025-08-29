@@ -1,5 +1,0 @@
-#ifndef GETOPTS_H_INCLUDED
-#define GETOPTS_H_INCLUDED_H_INCLUDED
-
-int getopts ();
-#endif
